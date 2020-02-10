@@ -1,0 +1,23 @@
+# Build dependencies and output folder
+/build/
+/src/**/obj/
+
+# NuGet dependencies
+/src/packages/
+
+# Gradle wrapper and configuration
+/.gradle/
+
+# Visual Studio generated files and folders
+.vs/
+*.user
+
+# Temporary files created by diff/mergetools etc.
+*.orig
+*.tmp
+
+# Mac OS X viewing preferences
+.DS_Store
+
+# Files generated during build time
+/src/**/Generated/

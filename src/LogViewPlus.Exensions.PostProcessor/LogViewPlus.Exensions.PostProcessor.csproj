@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\build\bin\</OutputPath>
+    <IntermediateOutputPath>..\..\build\obj\</IntermediateOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Clearcove.LogViewer.Common">
+      <HintPath>..\libs\Clearcove.LogViewer.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy /Y $(TargetDir)$(TargetFileName) %25AppData%25\LogViewPlus\Plugins" />
+  </Target>
+
+</Project>

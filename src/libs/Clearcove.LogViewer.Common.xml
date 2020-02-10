@@ -1,0 +1,1139 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Clearcove.LogViewer.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Clearcove.LogViewer.Common.ElementType">
+            <summary>
+            Used to represent the element type for a particular LogViewPlus column.
+            For a complete description of the values contained in this
+            enum please see:
+            https://www.logviewplus.com/docs/advanced_specifiers.html
+            </summary>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.FieldColumnInfo">
+            <summary>
+            This class is used to map a field in a log file (an ElementType) to a column in a LogViewPlus grid.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.FieldColumnInfo.Type">
+            <summary>
+            The log file data type.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.FieldColumnInfo.Caption">
+            <summary>
+            The caption to be used by the column.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.FieldColumnInfo.Visible">
+            <summary>
+            Whether or not the column is visible.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.FieldColumnInfo.VisibleIndex">
+            <summary>
+            The visible index position within the list of columns.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.FieldColumnInfo.Width">
+            <summary>
+            The width of the column.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.FieldColumnInfo.IsNumeric">
+            <summary>
+            A boolean flag indicating whether or not this column contains numeric data.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.FieldColumnInfo.FieldNames">
+            <summary>
+            A LogViewPlus internal field.  Used to manage unique string column names.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.FieldColumnInfo.LogFiles">
+            <summary>
+            A LogViewPlus internal field.  Used to manage unique string column names.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.FieldColumnInfo.IsString">
+            <summary>
+            Returns true if this object represents a string ElementType.
+            </summary>
+            <returns>True if this object represents a string ElementType.</returns>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.FieldColumnInfo.IsDate">
+            <summary>
+            Returns true if this object represents a date ElementType.
+            </summary>
+            <returns>True if this object represents a date ElementType.</returns>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.FieldColumnInfo.#ctor(Clearcove.LogViewer.Common.ElementType,System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            Creates a new FieldColumnInfo instance.
+            </summary>
+            <param name="type">The ElementType of the instance.</param>
+            <param name="visible">True if the column should be visible.</param>
+            <param name="width">The width of the column.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.FieldColumnInfo.#ctor(Clearcove.LogViewer.Common.ElementType,System.String,System.Boolean,System.Int32)">
+            <summary>
+            Creates a new FieldColumnInfo instance.
+            </summary>
+            <param name="type">The ElementType of the instance.</param>
+            <param name="caption">The column caption.</param>
+            <param name="visible">True if the column should be visible.</param>
+            <param name="visibleIndex">The visible index position of the column.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.FieldColumnInfo.#ctor(Clearcove.LogViewer.Common.ElementType,System.String,System.Boolean,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Creates a new FieldColumnInfo instance.
+            </summary>
+            <param name="type">The ElementType of the instance.</param>
+            <param name="caption">The column caption.</param>
+            <param name="visible">True if the column should be visible.</param>
+            <param name="visibleIndex">The visible index position of the column.</param>
+            <param name="width">The width of the column.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.FieldColumnInfo.AddFieldName(System.String,System.String)">
+            <summary>
+            A LogViewPlus internal field.  Used to manage unique string column names.
+            </summary>
+            <param name="key">The column name.</param>
+            <param name="logFileFullPath">The full path to the original log file.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.FieldColumnInfo.GetWidth(System.Int32)">
+            <summary>
+            Returns the width of the column after accounting for default values.
+            </summary>
+            <param name="defaultVal">The default width for the column.</param>
+            <returns>The width of the column after accounting for default values.</returns>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.FieldColumnInfo.Clone">
+            <summary>
+            Creates a clone of this FieldColumnInfo instance.
+            </summary>
+            <returns>A clone of this FieldColumnInfo instance.</returns>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.FieldColumnInfo.ToString">
+            <summary>Returns a string that represents the current object.</summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.IDateOverride">
+            <summary>
+            Used by a custom parser when the date for log entries should
+            be determined by file metadata.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.IDateOverride.DateOverride">
+            <summary>
+            The date to use for the log entries.  Set by LogViewPlus when initializing the file.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.IDateOverride.DateOverrideType">
+            <summary>
+            Determines which metadata should be used when determining the log file date.
+            </summary>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.DateOverrideType">
+            <summary>
+            Possible ways of determining a date from file metadata.
+            </summary>
+        </member>
+        <member name="F:Clearcove.LogViewer.Common.DateOverrideType.None">
+            <summary>
+            No date provided.
+            </summary>
+        </member>
+        <member name="F:Clearcove.LogViewer.Common.DateOverrideType.DateToday">
+            <summary>
+            Use today's date.  Ignores file metadata.
+            </summary>
+        </member>
+        <member name="F:Clearcove.LogViewer.Common.DateOverrideType.FileCreated">
+            <summary>
+            Use the file created date.
+            </summary>
+        </member>
+        <member name="F:Clearcove.LogViewer.Common.DateOverrideType.FileModified">
+            <summary>
+            Use the file modified date.
+            </summary>
+        </member>
+        <member name="F:Clearcove.LogViewer.Common.DateOverrideType.FileNameScan">
+            <summary>
+            Attempt to determine the date based on the file name.
+            </summary>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.IFinalizeLogEntry">
+            <summary>
+            Optional interface that parsers can implement.  When used, the parser will be called when
+            the log entry is considered final.  Finalizers are called before PostProcessors.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.IFinalizeLogEntry.FinalizeLogEntry(Clearcove.LogViewer.Common.LogEntry,System.String,Clearcove.LogViewer.Common.ParseResult)">
+            <summary>
+            Gives the parser one final chance to modify a log entry.  After this call, this
+            instance of the LogEntry will no longer be passed to this parser.  
+            
+            Note that this method takes 'unparsedData' as an argument.  Unparsed data may
+            occur after a log entry has successfully parsed and before the next log entry
+            begins.  For example, comments in a log file might show up as 'unparsedData'.  
+            Unparsed data will be set as part of the message of the original log entry.
+            </summary>
+            <param name="entry">The log entry which has just been parsed.</param>
+            <param name="unparsedData">Unparsed data, if found.</param>
+            <param name="result">The result of parsing this entry.  Either, Success, Fail or ContinueRead.</param>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.IDoNotSaveColumnOrientation">
+            <summary>
+            This is a marker interface used to indicate that columns orientation managed by this parser or reader 
+            should not be automatically saved.  Generally, this interface should not be implemented.
+            </summary>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.IHightlightText">
+            <summary>
+            Optional interface that parsers can use to tell LogViewPlus how to highlight text
+            in the grid.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.IHightlightText.HighlightCriteria">
+            <summary>
+            Specifies which text to search for and how the search should occur.
+            </summary>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.IColumnManagement">
+            <summary>
+            Optional interface that parsers can use to tell LogViewPlus which columns
+            are supported.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.IColumnManagement.GetSupportedTypes">
+            <summary>
+            This specifies which columns are available by default.
+            </summary>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.ILogAnalyzer">
+            <summary>
+            Similar to a filter, but analyzes a block of log entries rather than an
+            individual entries.  Used for point in time analysis.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ILogAnalyzer.Analyze(System.Object,System.Collections.Generic.IReadOnlyList{Clearcove.LogViewer.Common.LogEntry})">
+            <summary>
+            Used to analyze a block of log entries.  Note that this method will be called on the UI thread.
+            </summary>
+            <param name="ownerWindow">The current parent window.  This will be of type IWin32Window and can be used to show a dialog.</param>
+            <param name="logEntries">All log entries from the currently selected view.</param>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.ILogFilter">
+            <summary>
+            Implement this interface when creating your own, custom filters.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.ILogFilter.Arguments">
+            <summary>
+            The arguments used when creating this filter.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.ILogFilter.Name">
+            <summary>
+            The name used to identify this filter in the 'log list' tree view.
+            This name should be dynamically generated and uniquely identify 
+            this filter instance.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ILogFilter.Initialize(System.String)">
+            <summary>
+            Initializes the current filter with the string provided in the 'create filter' dialog.
+            </summary>
+            <param name="arguments">The string provided in the 'create filter' dialog.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ILogFilter.Show(Clearcove.LogViewer.Common.LogEntry)">
+            <summary>
+            Do we want to display this log entry to the user?
+            </summary>
+            <param name="logEntry">The log entry we need to analyze.</param>
+            <returns>True if the log entry should be displayed.</returns>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.ILogParser">
+            <summary>
+            Implement this interface when creating your own, custom parsers.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.ILogParser.Arguments">
+            <summary>
+            Returns the arguments used to configure this parser.  Return null if no
+            arguments were used.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ILogParser.AcceptsConfiguration">
+            <summary>
+            Boolean used to check if a parser can be configured.  If a parser is configurable, an arguments
+            text box will be used to gather the configuration from the user.
+            </summary>
+            <returns>True if this parser can be configured by the user.</returns>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ILogParser.Initialize(System.String)">
+            <summary>
+            Initializes the current filter with the string provided in the 'create parser' dialog.
+            In our simple example, we just want to echo this string back to the user in the 'thread' 
+            field of the LogEntry.
+            </summary>
+            <param name="arguments">The string provided in the 'create parser' dialog.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ILogParser.GetWarnings">
+            <summary>
+            After a parser has been initialized, there may be messages which you want to 
+            show to the user.  Errors should be raised as a ParseException, but less critical
+            messages can be shown as warnings.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ILogParser.IsLogEntry(System.String)">
+             <summary>
+             Does this log line represent a new log entry, or just
+             a continuation of the previous log entry?
+            
+             In our (simple) case, we consider it a log entry if
+             it contains the text " - " before the 30th character.
+             </summary>
+             <param name="logLine">The line in a text file currently being read.</param>
+             <returns>True if the line represents a new log entry.</returns>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ILogParser.Parse(System.String,Clearcove.LogViewer.Common.LogEntry)">
+            <summary>
+            Parses the given log line.
+            </summary>
+            <param name="logLine">The line in a text file currently being read.</param>
+            <param name="newEntry">The log entry to populate.</param>
+            <returns>The result of parsing the line - success, fail, continue, end.</returns>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.ParseResult">
+            <summary>
+            The result of a log file parse attempt.
+            </summary>
+        </member>
+        <member name="F:Clearcove.LogViewer.Common.ParseResult.Success">
+            <summary>
+            The log line was parsed successfully.  The log entry is now complete.
+            </summary>
+        </member>
+        <member name="F:Clearcove.LogViewer.Common.ParseResult.Fail">
+            <summary>
+            The log line was not a log entry.  It should be appended to the message
+            of the previous log entry.
+            </summary>
+        </member>
+        <member name="F:Clearcove.LogViewer.Common.ParseResult.ContinueRead">
+            <summary>
+            The log entry may be valid.  The next line is needed.
+            </summary>
+        </member>
+        <member name="F:Clearcove.LogViewer.Common.ParseResult.EndRead">
+            <summary>
+            EndRead is a signal to the parser controller to terminate processing of this
+            log entry and start over with the next entry. It is helpful when reading from
+            the middle of a log file when you know where your log entry begins and ends.
+            </summary>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.ILogPostProcessor">
+            <summary>
+            Post processors can modify a log entry after it has been successfully parsed.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ILogPostProcessor.Modify(Clearcove.LogViewer.Common.LogEntry)">
+            <summary>
+            Given a parsed log entry this method may (or may not) modify that entry.  This is an opportunity to 
+            transform log entries into a format more suitable for display in LogViewPlus.
+            
+            This method will be called immediately after a line is parsed and before the line is given to 
+            LogViewPlus for display.
+            </summary>
+            <param name="newEntry">The log entry to modify.</param>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.ILogReader">
+            <summary>
+            LogReaders can be used to process binary file formats or access network data.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.ILogReader.AllowProgressTracking">
+            <summary>
+            True if a standard progress bar should be used when loading the file.  Progress tracking
+            is done through the ProgressPosition value (relative to the size of the target file).
+            If false, LogViewPlus will use a marquee progress bar and the ProgressPosition should
+            return 0.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.ILogReader.ProgressPosition">
+            <summary>
+            The number of bytes read from the current log file.  This value is used to report file
+            load progress relative to the total number of bytes in the file.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.ILogReader.LineNumber">
+            <summary>
+            Used for error reporting.  If your file does not have line numbers, we recommend generating 
+            a sequential number for each new log entry.  Note that assigning a log number to a LogEntry
+            is the readers responsiblity.  When a new LogEntry is created, set the LogFileLineNumber.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.ILogReader.AllowTail">
+            <summary>
+            Returns true if this log reader supports tailing (reading new entries).
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ILogReader.AcceptsConfiguration">
+            <summary>
+            Boolean used to check if a log reader can be configured.  If a reader is configurable, 
+            an arguments text box will be used to gather the configuration from the user.
+            </summary>
+            <returns>True if this reader can be configured by the user.</returns>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.ILogReader.Arguments">
+            <summary>
+            Returns the arguments used to configure this reader.  Return null if no
+            arguments were used.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ILogReader.Initialize(System.String)">
+            <summary>
+            Initializes the current filter with the string provided in the 'create reader' dialog.  This
+            method will be called with a null value if the reader does not accept arguments.
+            </summary>
+            <param name="arguments">The string provided in the 'create reader' dialog.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ILogReader.GetWarnings">
+            <summary>
+            After a reader has been initialized, there may be messages which you want to 
+            show to the user.  Errors should be raised as a ParseException, but less critical
+            messages can be shown as warnings.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ILogReader.HasNextBatch(System.Int64)">
+            <summary>
+            Called when reading batches to determine if the NextBatch method should be called.  Note
+            that this method may be called multiple times before NextBatch is called.  
+            </summary>
+            <param name="fileSize">The current size of the target log file. -1 if the reader is not file based.</param>
+            <returns>True if there is more data to be read.</returns>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ILogReader.AtEndOfFile(System.Int64)">
+            <summary>
+            Called when the file is in tail mode, this method should return true when the passed in 
+            file size matches the number of bytes that have been read (the stream position).  This method
+            will only be called if AllowTail returns true.
+            
+            Note that some log files can be rolled and therefore the filesize may be less the the number 
+            of bytes read. Usually, the correct thing to do in this situation is to reload the file.
+            </summary>
+            <param name="fileSize">The current size of the target log file. -1 if the reader is not file based.</param>
+            <returns>True if there is more data to be read.</returns>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ILogReader.NextBatch">
+            <summary>
+            Returns all new entries which have been created since the last call to InitialLogRead.
+            Note that this method will only be called if the reader permits tailing.
+            
+            Should throw a NotImplementedException if unavailable.
+            </summary>
+            <returns>All log entries created since the last call to InitialLogRead.</returns>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ILogReader.InitializeRead(System.IO.FileInfo,System.Int64,System.Int64)">
+            <summary>
+            InitializeRead is responsible preparing your reader to read log entries.  For example, if you 
+            determine the format of your log file by inspecting the first few rows you can use InitializeRead
+            to inspect your log file.  InitializeRead returns any complete log entries read during the 
+            inspection process.  Return null if no log entries were read as part of the initialization process.  
+            This is the default behaviour for most implementations.
+            
+            The first argument to this method is the file to be read.  This file will need to be remembered
+            for subsequent calls to NextBatch().
+            
+            In the event of a partial read, you InitializeRead will give you the file positions (start, stop) 
+            which should be read.
+            </summary>
+            <param name="file">The file to be read.</param>
+            <param name="start">The start position (used for partial reads).</param>
+            <param name="stop">The end position (used for partial reads).</param>
+            <returns></returns>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.INotificationProvider">
+            <summary>
+            Notification providers determine how a user should be made aware of
+            a logging event.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.INotificationProvider.Initialized">
+            <summary>
+            False if the Initialize method should be called before triggering the notification.
+            True when the object has been initialized.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.INotificationProvider.Initialize(System.Action{Clearcove.LogViewer.Common.INotificationArgs})">
+            <summary>
+            Initializes the notification provider.  A callback is provided that can be used to
+            give LogViewPlus focus in Windows with the target filter selected.  This callback
+            is recommended for desktop alerts.
+            </summary>
+            <param name="showFilter">A callback used to give the current filter focus in Windows.</param>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.INotificationProvider.IsDesktopAlert">
+            <summary>
+            True if the alert is Windows based.  For example, a message box is Windows based.  Email is not.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.INotificationProvider.Show(Clearcove.LogViewer.Common.INotificationArgs)">
+            <summary>
+            Notifies the provider that a new log entry has been written to the filter.  
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.INotificationArgs">
+            <summary>
+            Arguments provided to a notification provider when triggered.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.INotificationArgs.Subject">
+            <summary>
+            The subject created from the user provided template.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.INotificationArgs.Message">
+            <summary>
+            The message created from the user provided template.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.INotificationArgs.CurrentWindow">
+            <summary>
+            The current parent window.  This is an IWin32Window that can be used to display a dialog.
+            </summary>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.ITailChangedNotification">
+            <summary>
+            Allows an ILogReader implementation to receive notification when a user changes enables or
+            disables tail on a log.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ITailChangedNotification.SetTailInitialValue(System.Boolean)">
+            <summary>
+            Sets the initial tail value for the log.  Note that tail may be disabled by default.
+            </summary>
+            <param name="enabled">True if the log should be tailed.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ITailChangedNotification.SetTailChanged(System.Boolean)">
+            <summary>
+            Called when a use changes the tail settings for a log.
+            </summary>
+            <param name="enabled">True if the log should be tailed.</param>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.LogEntryLookup">
+            <summary>
+            Delegate used by the LookupNext and LookupPrevious events to find the next log entry in the given view.
+            </summary>
+            <param name="startEntry">The log entry from which the search should start.</param>
+            <param name="source">The target view to be searched.</param>
+            <param name="currentFilter">The current filter from which the lookup source should search.  Use NULL to search relative the the users currently selected filter.</param>
+            <returns>An enumerable of 'next' log entries moving further away from the source.</returns>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.LogEntry">
+            <summary>
+            Represents an entry in a log file.  For a complete description of the properties contained in 
+            this class please see:
+            https://www.logviewplus.com/docs/advanced_specifiers.html
+            </summary>
+        </member>
+        <member name="E:Clearcove.LogViewer.Common.LogEntry.LookupNext">
+            <summary>
+            For internal use only.  Called when requesting the next log entry in a view.
+            </summary>
+        </member>
+        <member name="E:Clearcove.LogViewer.Common.LogEntry.LookupPrevious">
+            <summary>
+            For internal use only.  Called when requesting the next log entry in a view.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogEntry.FindNext(Clearcove.LogViewer.Common.LookupSource,Clearcove.LogViewer.Common.ILogFilter)">
+             <summary>
+             Finds next log entries as determined by the current view.  If you only
+             need one item, use FirstOrDefault() on the IEnumerable (System.Linq).
+             Note that this method executes a scan of the current view in order to
+             find the root log entry.
+            
+             This method works off of views and is not designed to be called during
+             log parsing activities.  It should only be called once parsing has
+             completed.  Currently, this means the method can only be called from
+             ILogFilter or ILogAnalyzer implementations.
+             </summary>
+             <param name="source">Determines how the search should be performed relative to the view.</param>
+             <param name="currentFilter">The current filter from which the lookup source should search.  Use NULL to search relative the the users currently selected filter.</param>
+             <returns>An enumerable containing the next log entry in the view.  Repeatedly
+             querying the enumerable will move further and further away from the current entry.</returns>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogEntry.FindPrevious(Clearcove.LogViewer.Common.LookupSource,Clearcove.LogViewer.Common.ILogFilter)">
+            <summary>
+            Finds previous log entries as determined by the current view.  If you only
+            need one item, use FirstOrDefault() on the IEnumerable (System.Linq).
+            Note that this method executes a scan of the current view in order to
+            find the root log entry.
+            
+            This method works off of views and is not designed to be called during
+            log parsing activities.  It should only be called once parsing has
+            completed.  Currently, this means the method can only be called from
+            ILogFilter or ILogAnalyzer implementations.
+            </summary>
+            <param name="source">Determines how the search should be performed relative to the view.</param>
+            <param name="currentFilter">The current filter from which the lookup source should search.  Use NULL to search relative the the users currently selected filter.</param>
+            <returns>An enumerable containing the previous log entry in the view.  Repeatedly
+            querying the enumerable will move further and further away from the current entry.</returns>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.LogFileLineNumber">
+            <summary>
+            The line number in the log file where this entry was read.  Managed by the file reader.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.PrettyPrintType">
+            <summary>
+            Manages pretty printing and syntax highlighting.  Possible values are:
+            0 = Numbers and Symbols
+            1 = Unformatted
+            2 = XML
+            3 = JSON
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.Date">
+            <summary>
+            The log entry date.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.OriginalLogEntry">
+            <summary>
+            The original text of the log entry as represented in the log file.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogEntry.SetOriginalLogEntry(System.Text.StringBuilder)">
+            <summary>
+            Sets the original text of the log entry as represented in the log file.
+            </summary>
+            <param name="msg">The original text of the log entry as represented in the log file.</param>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.Logger">
+            <summary>
+            Returns the Logger (%c) if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.QualifiedLogger">
+            <summary>
+            Returns the QualifiedLogger (%C) if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.FileName">
+            <summary>
+            Returns the FileName (%F) if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.Location">
+            <summary>
+            Returns the Location (%l) if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.LineNumber">
+            <summary>
+            Returns the LineNumber (%L) if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.Message">
+            <summary>
+            Returns the Message (%m) if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.MethodName">
+            <summary>
+            Returns the MethodName (%M) if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.Priority">
+            <summary>
+            Returns the Priority (%p) if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.Elapsed">
+            <summary>
+            Returns the Elapsed (%r) if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.Thread">
+            <summary>
+            Returns the Thread (%t) if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.NDC">
+            <summary>
+            Returns the NDC (%x) if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.Percent">
+            <summary>
+            Returns the Percent (%%) if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.Domain">
+            <summary>
+            Returns the Domain if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.Identity">
+            <summary>
+            Returns the Identity if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.UserName">
+            <summary>
+            Returns the UserName if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.Exception">
+            <summary>
+            Returns the Exception if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.AspCache">
+            <summary>
+            Returns the AspCache if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.AspContext">
+            <summary>
+            Returns the AspContext if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.AspRequest">
+            <summary>
+            Returns the AspRequest if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.AspSession">
+            <summary>
+            Returns the AspSession if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.UUID">
+            <summary>
+            Returns the UUID if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.SequenceNumber">
+            <summary>
+            Returns the SequenceNumber if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.Marker">
+            <summary>
+            Returns the Marker if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.HasProperties">
+            <summary>
+            True if this log entry instance has properties.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.Properties">
+            <summary>
+            Returns Mapped Diagnostic Content (%X) if available.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.HasUnknown">
+            <summary>
+            True if this log entry instance has unknown data.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.Unknown">
+            <summary>
+            An array of unidentified data.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.HasStrings">
+            <summary>
+            True if this log entry instance has strings.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.Strings">
+            <summary>
+            An array of strings as set in sequential order by the parser.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.FieldSize">
+            <summary>
+            For internal use only.  Helps to manage fields array memory.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.StringSize">
+            <summary>
+            For internal use only.  Helps to manage Strings array memory.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogEntry.UnknownSize">
+            <summary>
+            For internal use only.  Helps to manage Unknown array memory.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogEntry.AddUnknown(System.String)">
+            <summary>
+            Add unknown data.
+            </summary>
+            <param name="msg">The unknown data to be added.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogEntry.AddString(System.String)">
+            <summary>
+            Add a string value.
+            </summary>
+            <param name="msg">The new string value to be added.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogEntry.AddString(System.String,System.Byte)">
+            <summary>
+            Add a string value.  Used in multi-pattern processing.
+            </summary>
+            <param name="msg">The new string value to be added.</param>
+            <param name="position">The position in the array where the new value should be inserted.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogEntry.SetString(System.String,System.Byte)">
+            <summary>
+            Sets a string value at the given position.
+            </summary>
+            <param name="msg">The new string value to be added.</param>
+            <param name="position">The position in the array where the new value should be inserted.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogEntry.AppendLastUnknown(System.String)">
+            <summary>
+            Appends an unknown value.
+            </summary>
+            <param name="msg">The unknown value to be added.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogEntry.AppendLastString(System.String)">
+            <summary>
+            Appends a String value.
+            </summary>
+            <param name="msg">The String value to be added.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogEntry.GetString(System.Byte)">
+            <summary>
+            Gets the String value at the given position.
+            </summary>
+            <param name="index">The index position of the String value to be retrieved.</param>
+            <returns>The String value at the given position.</returns>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogEntry.AddProperty(System.String,System.Object)">
+            <summary>
+            Adds a property to the dictionary.
+            </summary>
+            <param name="key">The key for the given property.</param>
+            <param name="value">The value of the given property.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogEntry.#ctor">
+            <summary>
+            Creates a new log entry instance.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogEntry.#ctor(System.Byte)">
+            <summary>
+            Creates a new log entry instance of the recommended array size.
+            </summary>
+            <param name="recommendedStringSize">The recommended size of the string array.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogEntry.ToString">
+            <summary>Returns a string that represents the current object.</summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogEntry.Copy(Clearcove.LogViewer.Common.LogEntry)">
+            <summary>
+            Converts this LogEntry into a copy of the provided log entry.
+            </summary>
+            <param name="logEntry">The log entry to copy.</param>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.LogConnectionException">
+            <summary>
+            Exception used to indicate that the log datasource connection could not be established.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogConnectionException.#ctor">
+            <summary>
+            Creates a new LogConnectionException.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogConnectionException.#ctor(System.String)">
+            <summary>
+            Creates a new LogConnectionException.
+            </summary>
+            <param name="message">The error message.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogConnectionException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates a new LogConnectionException.
+            </summary>
+            <param name="message">The error message.</param>
+            <param name="inner">The underlying exception.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogConnectionException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Used for exception serialization.
+            </summary>
+            <param name="info">Serialization data for the object.</param>
+            <param name="context">Stream context.</param>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.LogFileLoadException">
+            <summary>
+            Exception used to indicate that the log file could not be loaded.  Can be used to notify the user
+            of the log file line number in a message box.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.LogFileLoadException.LineNumber">
+            <summary>
+            The log file line number where the parsing error occurred.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogFileLoadException.#ctor">
+            <summary>
+            Creates a new LogFileLoadException.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogFileLoadException.#ctor(System.String)">
+            <summary>
+            Creates a new LogFileLoadException.
+            </summary>
+            <param name="message">The error message.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogFileLoadException.#ctor(System.String,System.Int64,System.Exception)">
+            <summary>
+            Creates a new LogFileLoadException.
+            </summary>
+            <param name="message">The error message.</param>
+            <param name="lineNumber">The log file line number where the error occurred.</param>
+            <param name="inner">The underlying exception.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogFileLoadException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Used for exception serialization.
+            </summary>
+            <param name="info">Serialization data for the object.</param>
+            <param name="context">Stream context.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.LogFileLoadException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Used for LogFileLoadException serialization of the line number.
+            </summary>
+            <param name="info">Serialization data for the object.</param>
+            <param name="context">Stream context.</param>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.LookupSource">
+            <summary>
+            Used to determine how a log entry lookup should be performed.
+            </summary>
+        </member>
+        <member name="F:Clearcove.LogViewer.Common.LookupSource.CurrentFilter">
+            <summary>
+            Finds the item relative to the current view.  This may produce unexpected results if
+            the view is currently being built.
+            </summary>
+        </member>
+        <member name="F:Clearcove.LogViewer.Common.LookupSource.ParentFilter">
+            <summary>
+            Finds the item relative to the parent filter if available.  If unavailable, the root
+            log file will be used.
+            </summary>
+        </member>
+        <member name="F:Clearcove.LogViewer.Common.LookupSource.SourceLogFile">
+            <summary>
+            Finds the item relative to the source log file.  This will exclude any merged log entries.
+            </summary>
+        </member>
+        <member name="F:Clearcove.LogViewer.Common.LookupSource.ViewLogFile">
+            <summary>
+            Finds the item relative to the root log file.  Note that this may be a merged log file.
+            </summary>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.ParseException">
+            <summary>
+            Exception used to indicate unexpected data in the log file.  Can be used to notify the user
+            of the invalid log line in a message box.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.ParseException.UserFriendlyMessages">
+            <summary>
+            Returns a read only list of messages to be displayed to the user.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.ParseException.Line">
+            <summary>
+            The log file line where the parsing error occurred.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ParseException.#ctor">
+            <summary>
+            Creates a new ParseException.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ParseException.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new ParseException.
+            </summary>
+            <param name="message">The error message.</param>
+            <param name="line">The log file line where the error occurred.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ParseException.#ctor(System.String,System.String,System.Exception)">
+            <summary>
+            Creates a new ParseException.
+            </summary>
+            <param name="message">The error message.</param>
+            <param name="line">The log file line where the error occurred.</param>
+            <param name="innerException">The underlying exception.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ParseException.#ctor(System.Collections.Generic.List{System.String})">
+            <summary>
+            Used when validating a parser configuration to report warnings.
+            </summary>
+            <param name="friendlyMessages">A list of warnings to be displayed to the user.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ParseException.#ctor(System.String[])">
+            <summary>
+            Used when validating a parser configuration to report warnings.
+            </summary>
+            <param name="friendlyMessages">A list of warnings to be displayed to the user.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ParseException.AddUserFriendlyMessage(System.String)">
+            <summary>
+            Adds a warning to be displayed to the user.
+            </summary>
+            <param name="message">The warning to be added.</param>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.ICustomConfiguration">
+            <summary>
+            Used to implement a custom configuration which can be used to create or
+            edit complex configuration strings.  Note that custom configuration may
+            be in the form of a dialog.
+            
+            Implementing custom configuration will prevent direct editing of the
+            filter, parser or reader arguments.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ICustomConfiguration.Configure(System.Object,System.String)">
+            <summary>
+            Used to provide a custom configuration option when configuring a
+            ILogParser, ILogReader or ILogFilter.
+            </summary>
+            <param name="parentWindow">The current parent window.  This will
+            be of type IWin32Window and can be used to show a dialog.</param>
+            <param name="configuration">The string used to represent the target
+            configuration.  Null when a new configuration is requested.  We
+            recommend a base64 string for advanced configuration.</param>
+            <returns>The configuration string that should be passed to our
+            ILogParser or ILogFilter.</returns>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.IHasCustomConfiguration">
+             <summary>
+             Implement on custom parsers or filters if you need custom configuration.
+            
+             Note that custom code can also implement ICustomConfiguration directly so this
+             interface is not strictly necessary.  The advantage of using
+             IHasCustomConfiguration is that it helps separate configuration code from
+             the filter or parser implementation.
+             </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.IHasCustomConfiguration.GetConfigurationManager">
+            <summary>
+            Returns a custom configuration implementation.  This may be a dialog.
+            </summary>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.SearchHighlightCriteria">
+            <summary>
+            Represents a LogViewPlus highlight search.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.SearchHighlightCriteria.Text">
+            <summary>
+            The text we are searching for.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.SearchHighlightCriteria.CaseSensitive">
+            <summary>
+            True if the search is case sensitive.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.SearchHighlightCriteria.IsRegex">
+            <summary>
+            True if the search is a regular expression.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.SearchHighlightCriteria.FindWholeWord">
+            <summary>
+            True if we are searching for a whole word match.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.SearchHighlightCriteria.BackColorArgb">
+            <summary>
+            The background color in ARGB.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.SearchHighlightCriteria.ForeColorArgb">
+            <summary>
+            The fore color in ARGB.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.SearchHighlightCriteria.IncludeInWorkspace">
+            <summary>
+            True if this search should be saved as part of the workspace.
+            </summary>
+        </member>
+        <member name="P:Clearcove.LogViewer.Common.SearchHighlightCriteria.ComparisonMethod">
+            <summary>
+            Returns a StringComparison object which takes into account case sensitivity.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.SearchHighlightCriteria.#ctor(System.String,System.Boolean,System.Boolean,System.Boolean,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Creates a new SearchHighlightCriteria instance.
+            </summary>
+            <param name="text">The text we are searching for.</param>
+            <param name="caseSensitive">True if the search is case sensitive.</param>
+            <param name="findWholeWord">True if we are searching for a whole word match.</param>
+            <param name="isRegex">True if the search is a regular expression.</param>
+            <param name="foreColorArgb">The fore color in ARGB.</param>
+            <param name="backColorArgb">The background color in ARGB.</param>
+            <param name="includeInWorkspace">True if this search should be saved as part of the workspace.</param>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.SearchHighlightCriteria.Clone">
+            <summary>
+            Creates a clone of this SearchHighlightCriteria instance.
+            </summary>
+            <returns>A clone of this SearchHighlightCriteria instance.</returns>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.SearchHighlightCriteria.ToString">
+            <summary>Returns a string that represents the current object.</summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.SearchHighlightCriteria.Equals(System.Object)">
+            <summary>Determines whether the specified object is equal to the current object.</summary>
+            <param name="obj">The object to compare with the current object. </param>
+            <returns>
+            <see langword="true" /> if the specified object  is equal to the current object; otherwise, <see langword="false" />.</returns>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.SearchHighlightCriteria.Equals(Clearcove.LogViewer.Common.SearchHighlightCriteria)">
+            <summary>
+            Returns true if the SearchHighlightCriteria instances match.
+            </summary>
+            <param name="other">The SearchHighlightCriteria instance to compare.</param>
+            <returns>True if the SearchHighlightCriteria instances match.</returns>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.SearchHighlightCriteria.Equals(Clearcove.LogViewer.Common.SearchHighlightCriteria,Clearcove.LogViewer.Common.SearchHighlightCriteria)">
+            <summary>
+            Returns true if the SearchHighlightCriteria instances match.
+            </summary>
+            <param name="a">The first SearchHighlightCriteria instance to compare.</param>
+            <param name="b">The second SearchHighlightCriteria instance to compare.</param>
+            <returns>True if the SearchHighlightCriteria instances match.</returns>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.SearchHighlightCriteria.GetHashCode">
+            <summary>Serves as the default hash function. </summary>
+            <returns>A hash code for the current object.</returns>
+        </member>
+    </members>
+</doc>
