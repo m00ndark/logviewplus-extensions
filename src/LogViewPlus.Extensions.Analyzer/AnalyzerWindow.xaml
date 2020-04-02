@@ -3,15 +3,14 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		xmlns:layout="clr-namespace:Syncfusion.Windows.Shared;assembly=Syncfusion.Shared.Wpf"
 		xmlns:chart="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"
 		xmlns:local="clr-namespace:LogViewPlus.Extensions.Analyzer"
 		mc:Ignorable="d"
 		d:DataContext="{d:DesignInstance local:AnalyzerViewModel}"
 		WindowStartupLocation="CenterScreen" 
 		Title="Analyzer"
-		Height="450"
-		Width="800"
+		Height="1000"
+		Width="1700"
 		Background="White">
 
 	<Grid>
@@ -103,10 +102,10 @@
 			</chart:SfChart.Legend>
 
 			<chart:SfChart.PrimaryAxis>
-				<chart:DateTimeAxis LabelRotationAngle="90"
+				<chart:DateTimeAxis LabelRotationAngle="35"
 									PlotOffset="15"
 									ShowTrackBallInfo="True" 
-									LabelFormat="T"
+									LabelFormat="yyyy-MM-dd HH:mm:ss"
 									Foreground="Black"
 									AxisLineStyle="{StaticResource AxisStyle}"
 									LabelTemplate="{StaticResource XLabelTemplate }" 
@@ -118,7 +117,7 @@
 				<chart:NumericalAxis Foreground="Black"
 				                     Interval="5" 
 									 Minimum="0"
-				                     Maximum="40" 
+				                     Maximum="{Binding MaxPercentage}" 
 									 HorizontalAlignment="Center" 
 									 ShowTrackBallInfo="True"
 				                     AxisLineStyle="{StaticResource AxisStyle}"

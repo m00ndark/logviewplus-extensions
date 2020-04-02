@@ -221,11 +221,13 @@
             </summary>
         </member>
         <member name="M:Clearcove.LogViewer.Common.ILogAnalyzer.Analyze(System.Object,System.Collections.Generic.IReadOnlyList{Clearcove.LogViewer.Common.LogEntry})">
-            <summary>
-            Used to analyze a block of log entries.  Note that this method will be called on the UI thread.
-            </summary>
-            <param name="ownerWindow">The current parent window.  This will be of type IWin32Window and can be used to show a dialog.</param>
-            <param name="logEntries">All log entries from the currently selected view.</param>
+             <summary>
+             Used to analyze a block of log entries.  Note that this method will be called on the UI thread.
+            
+             Note that the owner window will implement ILogViewer and can be cast if necessary.
+             </summary>
+             <param name="ownerWindow">The current parent window.  This will be of type IWin32Window and can be used to show a dialog.</param>
+             <param name="logEntries">All log entries from the currently selected view.</param>
         </member>
         <member name="T:Clearcove.LogViewer.Common.ILogFilter">
             <summary>
@@ -457,6 +459,24 @@
             <param name="start">The start position (used for partial reads).</param>
             <param name="stop">The end position (used for partial reads).</param>
             <returns></returns>
+        </member>
+        <member name="T:Clearcove.LogViewer.Common.ILogViewer">
+            <summary>
+            This interface contains a number of common user actions which may be executed
+            from a plugin.  Currently, this type can only be accessed from ILogAnalyzer
+            implementations.
+            </summary>
+        </member>
+        <member name="M:Clearcove.LogViewer.Common.ILogViewer.FindLogEntry(Clearcove.LogViewer.Common.LogEntry)">
+             <summary>
+             Finds and selects the given log entry in the current log file.  The search will
+             start from the current view.  If it is not found in the current view, the parent
+             view will be searched recursively.
+            
+             This method requires the UI thread and it will be invoked if necessary.
+             </summary>
+             <param name="logEntry">The log entry we want to find.</param>
+             <returns>True if the log entry was found.</returns>
         </member>
         <member name="T:Clearcove.LogViewer.Common.INotificationProvider">
             <summary>

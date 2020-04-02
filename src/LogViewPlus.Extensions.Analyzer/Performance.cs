@@ -130,6 +130,8 @@ namespace LogViewPlus.Extensions.Analyzer
 			public double MemoryUsage { get; set; } = double.MinValue;
 			public double CpuUsage { get; set; } = double.MinValue;
 
+			public double MaxUsageValue => Math.Max(MemoryUsage, CpuUsage);
+
 			public bool IsComplete
 				=> MemoryUsage > double.MinValue
 					&& CpuUsage > double.MinValue;

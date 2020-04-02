@@ -32,33 +32,7 @@ namespace LogViewPlus.Extensions.Analyzer
 				return _dataPoints;
 			}
 		}
-	}
-	public class Model
-	{
-		public DateTime Year
-		{
-			get;
-			set;
-		}
-		public double India
-		{
-			get;
-			set;
-		}
-		public double Germany
-		{
-			get;
-			set;
-		}
-		public double England
-		{
-			get;
-			set;
-		}
-		public double France
-		{
-			get;
-			set;
-		}
+
+		public int MaxPercentage => (int) Math.Min(100, Math.Ceiling((DataPoints.Max(x => x.MaxUsageValue) + 2.5) / 5d) * 5);
 	}
 }
