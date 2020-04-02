@@ -85,9 +85,13 @@
     <Compile Include="AnalyzerWindow.xaml.cs">
       <DependentUpon>AnalyzerWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Performance.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Model\DataPoint.cs" />
+    <Compile Include="ACS.cs" />
+    <Compile Include="Model\ChartData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataPointTooltipConverter.cs" />
+    <Compile Include="SfChartExt.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="AnalyzerWindow.xaml">
@@ -97,6 +101,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LogViewPlus.Exensions.PostProcessor\LogViewPlus.Exensions.PostProcessor.csproj">
+      <Project>{606522CF-67C2-43E9-8D8C-438739530CA6}</Project>
+      <Name>LogViewPlus.Exensions.PostProcessor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -6,26 +6,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Clearcove.LogViewer.Common;
+using LogViewPlus.Extensions.Analyzer.Model;
 
 namespace LogViewPlus.Extensions.Analyzer
 {
 	public class AnalyzerViewModel
 	{
-		private readonly Func<IEnumerable<Performance.DataPoint>> _analyze;
-		private ObservableCollection<Performance.DataPoint> _dataPoints;
+		private readonly Func<IDictionary<string, List<DataPoint>>> _analyze;
+		private ObservableCollection<ChartData> _dataPoints;
 
-		public AnalyzerViewModel(Func<IEnumerable<Performance.DataPoint>> analyze)
+		public AnalyzerViewModel(Func<IDictionary<string, List<DataPoint>>> analyze)
 		{
 			_analyze = analyze;
 		}
 
-		public ObservableCollection<Performance.DataPoint> DataPoints
+		public ObservableCollection<ChartData> ChartData
 		{
 			get
 			{
 				if (_dataPoints == null)
 				{
-					_dataPoints = new ObservableCollection<Performance.DataPoint>(_analyze());
+					_dataPoints = new ObservableCollection<ChartData>(_analyze()
+						.Select(x => new ChartData
+							{
+								Component = x.Key,
+								DataPoints = new ObservableCollection<DataPoint>(x.Value)
+							}));
 					Debug.WriteLine($"DataPoints.Count: {_dataPoints.Count}");
 				}
 
@@ -33,6 +39,6 @@ namespace LogViewPlus.Extensions.Analyzer
 			}
 		}
 
-		public int MaxPercentage => (int) Math.Min(100, Math.Ceiling((DataPoints.Max(x => x.MaxUsageValue) + 2.5) / 5d) * 5);
+		public int MaxPercentage => (int) Math.Min(100, Math.Ceiling((ChartData.SelectMany(x => x.DataPoints).Max(x => x.Value) + 2.5) / 5d) * 5);
 	}
 }
