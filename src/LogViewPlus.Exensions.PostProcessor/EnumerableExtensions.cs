@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace LogViewPlus.Exensions.PostProcessor
 {
@@ -8,7 +6,8 @@ namespace LogViewPlus.Exensions.PostProcessor
 	{
 		public static string AsSingleLine(this IEnumerable<string> lines)
 		{
-			return string.Join("↲↓", lines);
+			// \u21B5 == ↵
+			return string.Join("\u21B5", lines);
 		}
 	}
 }

@@ -22,6 +22,10 @@ namespace LogViewPlus.Exensions.PostProcessor
 
 		public void Modify(LogEntry newEntry)
 		{
+			// REVERT NEW LINE CHARACTER
+
+			newEntry.OriginalLogEntry = newEntry.OriginalLogEntry.Replace('\u21B5', '\n');
+
 			// COLUMN_LOGGER_PATH
 
 			string logger = newEntry.Logger;
@@ -48,7 +52,7 @@ namespace LogViewPlus.Exensions.PostProcessor
 
 			if (!string.IsNullOrEmpty(message))
 			{
-				string[] lines = message.Split('\n');
+				string[] lines = message.Split('\n', '\u21B5');
 
 				newEntry.Message = lines
 					.TakeWhile(line => !line.StartsWith("   at "))
