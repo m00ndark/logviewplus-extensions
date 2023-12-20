@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LogViewPlus.Exensions.PostProcessor
+namespace LogViewPlus.Extensions.PostProcessor
 {
 	public static class EnumerableExtensions
 	{

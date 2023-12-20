@@ -103,14 +103,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LogViewPlus.Exensions.PostProcessor\LogViewPlus.Exensions.PostProcessor.csproj">
+    <ProjectReference Include="..\LogViewPlus.Extensions.PostProcessor\LogViewPlus.Extensions.PostProcessor.csproj">
       <Project>{606522CF-67C2-43E9-8D8C-438739530CA6}</Project>
-      <Name>LogViewPlus.Exensions.PostProcessor</Name>
+      <Name>LogViewPlus.Extensions.PostProcessor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
+<!--
     <PostBuildEvent>copy /Y $(TargetDir)$(TargetFileName) %25AppData%25\LogViewPlus\Plugins
 copy /Y $(TargetDir)Syncfusion.* %25AppData%25\LogViewPlus\Plugins</PostBuildEvent>
+-->
   </PropertyGroup>
 </Project>

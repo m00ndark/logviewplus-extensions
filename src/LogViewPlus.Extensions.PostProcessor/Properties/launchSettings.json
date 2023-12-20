@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "LogViewPlus.Exensions.PostProcessor": {
+    "LogViewPlus.Extensions.PostProcessor": {
       "commandName": "Executable",
       "executablePath": "C:\\Program Files\\LogViewPlus\\LogViewPlus.exe"
     }

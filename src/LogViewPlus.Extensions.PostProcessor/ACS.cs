@@ -2,7 +2,7 @@
 using System.Linq;
 using Clearcove.LogViewer.Common;
 
-namespace LogViewPlus.Exensions.PostProcessor
+namespace LogViewPlus.Extensions.PostProcessor
 {
 	public class ACS : ILogPostProcessor, IColumnManagement
 	{
