@@ -33,7 +33,9 @@ namespace LogViewPlus.Extensions.PostProcessor
 
 			if (!string.IsNullOrEmpty(logger))
 			{
-				int lastSeparatorIndex = logger.LastIndexOf('\\');
+				int lastSeparatorIndex = logger.Contains('\\')
+					? logger.LastIndexOf('\\')
+					: logger.LastIndexOf('/');
 
 				if (lastSeparatorIndex != -1)
 				{
@@ -43,7 +45,6 @@ namespace LogViewPlus.Extensions.PostProcessor
 			}
 
 			newEntry.AddString(loggerPath);
-
 
 			// COLUMN_STACK_TRACE
 
